@@ -7,7 +7,7 @@ terraform {
   }
 }
 resource "google_project_service" "api_proj_enabler" {
-    project = var.orgproject
+    project = var.billproject
     for_each = var.api
     service = each.value
 }

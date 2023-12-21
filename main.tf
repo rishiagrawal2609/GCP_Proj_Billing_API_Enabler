@@ -9,20 +9,11 @@ terraform {
     }
   }
 }
-#Header End
-# locals {
-#   checkrole = var.role_id == null ? 0:1
-# }
-#data collector 
-data "google_projects" "my-org-projects" {
-  filter = "parent.id:${var.org_id}"
-}
 
 
-# Resource to execute the python script that will enable the apis. 
 resource "null_resource" "Project_script" {
  provisioner "local-exec" {  
-    command = "/usr/bin/python3 extractor.py "
+    command = "/usr/bin/python3 extractor.py ${var.billing_id}"
   }
 }
 
